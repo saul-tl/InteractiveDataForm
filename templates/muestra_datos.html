@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Datos Recibidos</title>
+    <title>Publicaciones</title>
 </head>
 <body>
-    <h1>Datos recibidos mediante GET</h1>
-    <p><strong>Título:</strong> {{ title }}</p>
-    <p><strong>Cuerpo:</strong> {{ body }}</p>
+    <h1>Publicaciones</h1>
+    {% if posts %}
+        {% for post in posts %}
+            <div>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.body }}</p>
+                <a href="/edit_post/{{ post.id }}">Editar</a>
+                <a href="/delete_post/{{ post.id }}" onclick="return confirm('¿Estás seguro de querer eliminar esta publicación?');">Eliminar</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No hay publicaciones disponibles.</p>
+    {% endif %}
+
+    <!-- Botón para volver a la página de nueva publicación -->
+    <a href="/">Crear Nueva Publicación</a>
 </body>
 </html>

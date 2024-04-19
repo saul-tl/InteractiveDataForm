@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Publicación</title>
+</head>
+<body>
+    <h1>Editar Publicación</h1>
+    <form action="/edit_post/{{ post.id }}" method="post">
+        <p><strong>Título:</strong> {{ title }}</p>
+        <p><strong>Cuerpo:</strong> {{ body }}</p>
+        <input type="submit" value="Actualizar Publicación">
+    </form>
+</body>
+</html>
