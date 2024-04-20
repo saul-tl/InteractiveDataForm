@@ -3,32 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Publicaciones</title>
+    <!-- Incluye Bootstrap desde CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Publicaciones</h1>
-    <!-- Área para mostrar publicaciones recuperadas -->
-    {% if posts %}
-        {% for post in posts %}
-            <div>
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.body }}</p>
-                <a href="/edit_post/{{ post.id }}">Editar</a>
-                <a href="/delete_post/{{ post.id }}" onclick="return confirm('¿Estás seguro de querer eliminar esta publicación?');">Eliminar</a>
+    <div class="container mt-5">
+        <h1 class="mb-4">Publicaciones</h1>
+        <!-- Área para mostrar publicaciones recuperadas -->
+        <div class="list-group">
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ post.title }}</h5>
+                            <small>
+                                <a href="/edit_post/{{ post.id }}" class="badge badge-primary">Editar</a>
+                                <a href="/delete_post/{{ post.id }}" class="badge badge-danger" onclick="return confirm('¿Estás seguro de querer eliminar esta publicación?');">Eliminar</a>
+                            </small>
+                        </div>
+                        <p class="mb-1">{{ post.body }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No hay publicaciones disponibles.</p>
+            {% endif %}
+        </div>
+
+        <!-- Formulario para agregar una nueva publicación que se muestra directamente en esta página -->
+        <h2 class="mt-5">Agregar Nueva Publicación</h2>
+        <form method="POST" action="/muestra_datos" class="mb-3">
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" class="form-control" id="title" name="title" required placeholder="Ingrese título">
             </div>
-        {% endfor %}
-    {% else %}
-        <p>No hay publicaciones disponibles.</p>
-    {% endif %}
+            <div class="form-group">
+                <label for="body">Cuerpo:</label>
+                <textarea class="form-control" id="body" name="body" required placeholder="Ingrese contenido"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Agregar y Mostrar</button>
+        </form>
 
-    <!-- Formulario para agregar una nueva publicación que se muestra directamente en esta página -->
-    <h2>Agregar Nueva Publicación</h2>
-    <form method="POST" action="/muestra_datos">
-        <input type="text" name="title" placeholder="Ingrese título" required>
-        <textarea name="body" placeholder="Ingrese contenido" required></textarea>
-        <input type="submit" value="Agregar y Mostrar">
-    </form>
-
-    <!-- Botón para volver a la página de nueva publicación -->
-    <a href="/">Volver a Nueva Publicación</a>
+        <!-- Botón para volver a la página de nueva publicación -->
+        <a href="/" class="btn btn-secondary">Volver a Nueva Publicación</a>
+    </div>
 </body>
 </html>

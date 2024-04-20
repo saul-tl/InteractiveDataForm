@@ -2,18 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Nueva Publicación</title>
+    <title>Configuración de Publicaciones</title>
+    <!-- Incluir Bootstrap desde CDN para estilos rápidos y responsivos -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Configurar Número de Publicaciones a Mostrar</h1>
+    <div class="container mt-5">
+        <h1 class="mb-4">Especificar Número de Publicaciones a Mostrar</h1>
 
-    <!-- Formulario para especificar número de publicaciones a mostrar -->
-    <form method="GET" action="/muestra_datos">
-        <label for="num_posts">Número de publicaciones a mostrar:</label>
-        <input type="number" id="num_posts" name="num_posts" min="1" max="100" required>
-        <input type="submit" value="Mostrar Publicaciones">
-    </form>
+        <!-- Formulario para especificar el número de publicaciones a mostrar -->
+        <form method="GET" action="/muestra_datos" class="mb-3">
+            <div class="form-group">
+                <label for="num_posts">Número de publicaciones:</label>
+                <input type="number" class="form-control" id="num_posts" name="num_posts" min="1" max="100" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Mostrar Publicaciones</button>
+        </form>
 
-    <a href="/">Volver a Inicio</a>
+        <!-- Botón para volver a la página principal, si hay una -->
+        <a href="/" class="btn btn-secondary">Volver al Inicio</a>
+    </div>
 </body>
 </html>
