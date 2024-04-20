@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>Publicaciones</h1>
+    <!-- Área para mostrar publicaciones recuperadas -->
     {% if posts %}
         {% for post in posts %}
             <div>
@@ -19,7 +20,15 @@
         <p>No hay publicaciones disponibles.</p>
     {% endif %}
 
+    <!-- Formulario para agregar una nueva publicación que se muestra directamente en esta página -->
+    <h2>Agregar Nueva Publicación</h2>
+    <form method="POST" action="/muestra_datos">
+        <input type="text" name="title" placeholder="Ingrese título" required>
+        <textarea name="body" placeholder="Ingrese contenido" required></textarea>
+        <input type="submit" value="Agregar y Mostrar">
+    </form>
+
     <!-- Botón para volver a la página de nueva publicación -->
-    <a href="/">Crear Nueva Publicación</a>
+    <a href="/">Volver a Nueva Publicación</a>
 </body>
 </html>

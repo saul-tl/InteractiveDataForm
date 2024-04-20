@@ -5,21 +5,15 @@
     <title>Nueva Publicación</title>
 </head>
 <body>
-    <h1>Crear Nueva Publicación</h1>
+    <h1>Configurar Número de Publicaciones a Mostrar</h1>
 
-    <!-- Formulario para enviar a la API -->
-    <form method="POST" action="/add_post">
-        <input type="text" name="title" required placeholder="Ingrese título">
-        <textarea name="body" required placeholder="Ingrese contenido"></textarea>
-        <input type="submit" value="Crear y Guardar Publicación">
-    </form>
-
-    <!-- Formulario para visualizar directamente sin guardar en la API -->
+    <!-- Formulario para especificar número de publicaciones a mostrar -->
     <form method="GET" action="/muestra_datos">
-        <input type="text" name="title" required placeholder="Ingrese título">
-        <textarea name="body" required placeholder="Ingrese contenido"></textarea>
-        <input type="submit" value="Enviar para Visualización">
+        <label for="num_posts">Número de publicaciones a mostrar:</label>
+        <input type="number" id="num_posts" name="num_posts" min="1" max="100" required>
+        <input type="submit" value="Mostrar Publicaciones">
     </form>
 
+    <a href="/">Volver a Inicio</a>
 </body>
 </html>

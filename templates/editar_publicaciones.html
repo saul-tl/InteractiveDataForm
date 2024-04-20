@@ -7,9 +7,16 @@
 <body>
     <h1>Editar Publicación</h1>
     <form action="/edit_post/{{ post.id }}" method="post">
-        <p><strong>Título:</strong> {{ title }}</p>
-        <p><strong>Cuerpo:</strong> {{ body }}</p>
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" value="{{ post.title }}" required><br>
+
+        <label for="body">Cuerpo:</label>
+        <textarea id="body" name="body" required>{{ post.body }}</textarea><br>
+
         <input type="submit" value="Actualizar Publicación">
     </form>
+
+    <!-- Botón para volver a la vista de publicaciones -->
+    <a href="/muestra_datos"><button>Volver a Publicaciones</button></a>
 </body>
 </html>
